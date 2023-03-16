@@ -1,0 +1,2 @@
+#!/bin/bash
+gcc -S -masm=intel $CFILE - o - | tee "${CFILE%.c}.s"
