@@ -1,3 +1,4 @@
+#include <limits.h>
 #include "main.h"
 
 /**
@@ -9,6 +10,9 @@
 int print_last_digit(int n)
 {
 	int last_digit;
+
+	if (n == INT_MIN)
+		return (8);
 
 	if (n < 0)
 	{
