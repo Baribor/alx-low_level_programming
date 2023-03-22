@@ -22,7 +22,7 @@ int main(void)
 	}
 
 	c = a + b;
-	printf("%lu\n");
+	printf("%lu\n", c);
 
 	return (0);
 }
