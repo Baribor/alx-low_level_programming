@@ -9,7 +9,7 @@ int main(void)
 {
 	int f = 1;
 	int s = 2;
-	int sum = 2;
+	int sum = s;
 	int n = 3;
 	int nxt;
 
@@ -20,7 +20,7 @@ int main(void)
 		if (nxt >= 4000000)
 			break;
 
-		if (n % 2 == 0)
+		if (nxt % 2 == 0)
 			sum += nxt;
 
 
