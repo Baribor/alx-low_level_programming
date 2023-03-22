@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define MOD 1000000000
+
 /**
  * main - Entry point
  *
@@ -7,26 +9,19 @@
  */
 int main(void)
 {
-	int i, n = 50;
-	long long int fib[50];
+	int f = 1,  s = 2, nxt, n = 2;
 
-	fib[0] = 1;
-	fib[1] = 2;
+	printf("%d, %d, ", f, s);
 
-	for (i = 2; i < n; ++i)
+	while (n < 50)
 	{
-		fib[i] = fib[i - 1] + fib[i - 2];
+		nxt = (f + s) % MOD;
+		printf("%d, ", nxt);
+		f = s;
+		s = nxt;
+		n++;
 	}
-	for (i = 0; i < n; ++i)
-	{
-		printf("%lld", fib[i]);
-
-		if (i < 49)
-		{
-			printf(", ");
-		}
-	}
-
-	putchar('\n');
+	nxt = (f + s) % MOD;
+	printf("%d\n", nxt);
 	return (0);
 }
