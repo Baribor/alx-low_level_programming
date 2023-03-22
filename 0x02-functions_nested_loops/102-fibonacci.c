@@ -14,7 +14,7 @@ int main(void)
 
 	while (n < 50)
 	{
-		nxt = f + s; 
+		nxt = f + s;
 		printf("%lu, ", nxt);
 		f = s;
 		s = nxt;
