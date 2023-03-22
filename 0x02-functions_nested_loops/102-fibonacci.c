@@ -12,7 +12,7 @@ int main(void)
 
 	printf("%lu, %lu, ", f, s);
 
-	while (n < 50)
+	while (n < 49)
 	{
 		nxt = f + s;
 		printf("%lu, ", nxt);
