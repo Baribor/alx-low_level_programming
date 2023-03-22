@@ -56,10 +56,10 @@ void times_table(void)
 			{
 				_putchar(',');
 				_putchar(' ');
+				if (prod <= 9)
+					_putchar(' ');
 			}
 
-			if (prod <= 9)
-				_putchar(' ');
 			print_num(prod);
 
 			}
