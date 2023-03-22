@@ -7,9 +7,9 @@
  */
 int main(void)
 {
-	int sum = 0;
+	int sum = 0, i;
 
-	for (int i = 1023; i > 0; --i)
+	for (i = 1023; i > 0; --i)
 	{
 		if (i % 3 == 0 || i % 5 == 0)
 		{
@@ -17,6 +17,6 @@ int main(void)
 		}
 	}
 	printf("%d\n", sum);
-	
+
 	return (0);
 }
