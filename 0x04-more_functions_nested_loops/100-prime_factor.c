@@ -2,8 +2,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#define NUM 612852475143
-
 /**
  * isPrime - Checks if a number is a prime.
  *
@@ -19,6 +17,9 @@ bool isPrime(unsigned long n)
 
 	if (n < 4)
 		return (true);
+
+	if (n % 2 == 0)
+		return (false);
 
 	for (i = half; i > 1; --i)
 	{
@@ -36,7 +37,8 @@ bool isPrime(unsigned long n)
  */
 int main(void)
 {
-	unsigned long i;
+
+	unsigned long i, NUM = 612852475143;
 
 	for (i = NUM / 2; i > 0; --i)
 	{
