@@ -1,6 +1,21 @@
 #include <stdlib.h>
 
 /**
+ * free_grid - frees a 2d array
+ * @grid: The grind to free
+ * @height: height of the array
+ * Return: Nothing
+ */
+void free_grid(int **grid, int height)
+{
+	int i;
+
+	for (i = 0; i < height; ++i)
+		free(grid[i]);
+	free(grid);
+}
+
+/**
  * alloc_grid - created a 2d array
  * @width: width of the array
  * @height: height of the array
@@ -15,14 +30,17 @@ int **alloc_grid(int width, int height)
 
 	grid = (int **) malloc(height * sizeof(int *));
 	if (!grid)
+	{
+		free_grid(grid, height);
 		return (NULL);
+	}
 
 	for (i = 0; i < height; ++i)
 	{
 		grid[i] = malloc(width * sizeof(int));
 		if (!grid[i])
 		{
-			free(grid);
+			free_grid(grid, height);
 			return (NULL);
 		}
 
