@@ -6,7 +6,7 @@
  * @height: height of the array
  * Return: Nothing
  */
-void free_grid(int **grid, int height)
+void fr_grid(int **grid, int height)
 {
 	int i;
 
@@ -33,7 +33,7 @@ int **alloc_grid(int width, int height)
 	grid = (int **) malloc(height * sizeof(int *));
 	if (!grid)
 	{
-		free_grid(grid, height);
+		fr_grid(grid, height);
 		return (NULL);
 	}
 
@@ -42,7 +42,7 @@ int **alloc_grid(int width, int height)
 		grid[i] = malloc(width * sizeof(int));
 		if (!grid[i])
 		{
-			free_grid(grid, height);
+			fr_grid(grid, height);
 			return (NULL);
 		}
 
