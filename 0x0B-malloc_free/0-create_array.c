@@ -1,5 +1,11 @@
 #include <stdlib.h>
 
+/**
+ * create_array - creates a variable size array
+ * @size: size of the array
+ * @c: default character to fill
+ * Return: the created array
+ */
 char *create_array(unsigned int size, char c)
 {
 	char *arr;
@@ -7,7 +13,7 @@ char *create_array(unsigned int size, char c)
 
 	if (size == 0)
 		return (NULL);
-	arr = malloc(size * sizeof(char));
+	arr = (int *) malloc(size * sizeof(char));
 	i = 0;
 	while (i < size)
 	{
