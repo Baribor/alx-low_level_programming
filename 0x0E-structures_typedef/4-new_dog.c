@@ -15,10 +15,16 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_t *d;
 	int sn = strlen(name);
 	int so = strlen(owner);
-	char *nsn = (char *)malloc((sn * sizeof(char)) + 1);
-	char *nso = (char *)malloc((so * sizeof(char)) + 1);
+	char *nsn;
+	char *nso;
 
-	if (!(nsn && nso))
+	nsn = (char *)malloc((sn * sizeof(char)) + 1);
+
+	if (!nsn)
+		return (NULL);
+
+	nso = (char *)malloc((so * sizeof(char)) + 1);
+	if (!nso)
 		return (NULL);
 
 	nsn = strcpy(nsn, name);
