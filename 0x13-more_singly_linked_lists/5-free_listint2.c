@@ -14,7 +14,7 @@ void free_listint2(listint_t **head)
 	if (head == NULL || *head == NULL)
 		return;
 
-	currentNode = *head
+	currentNode = *head;
 
 	while (currentNode != NULL)
 	{
