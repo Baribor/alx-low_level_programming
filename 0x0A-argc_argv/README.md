@@ -1,0 +1,1 @@
+This project aims to build an understand on argv and argc in c

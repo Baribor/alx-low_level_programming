@@ -1,12 +1,12 @@
 #include <string.h>
 
 /**
-* check_palindrome - Checks if a string is palindrome recursively
-* @s: The pointer to the string
-* @l: Left index. Typically starts from 0
-* @r: Right index. Typically starts from the last index of the string
-* Return: 1 if palindrome else 0
-*/
+ * check_palindrome - Checks if a string is palindrome recursively
+ * @s: The pointer to the string
+ * @l: Left index. Typically starts from 0
+ * @r: Right index. Typically starts from the last index of the string
+ * Return: 1 if palindrome else 0
+ */
 int check_palindrome(char *s, int l, int r)
 {
 	if (s[l] != s[r])
@@ -16,15 +16,13 @@ int check_palindrome(char *s, int l, int r)
 		return (1);
 
 	return (check_palindrome(s, l + 1, r - 1));
-
 }
 
-
 /**
-* is_palindrome - Checks if a string is a palindrome
-* @s: Pointer to the string
-* Return: 1 if palindrome else 0
-*/
+ * is_palindrome - Checks if a string is a palindrome
+ * @s: Pointer to the string
+ * Return: 1 if palindrome else 0
+ */
 int is_palindrome(char *s)
 {
 	int len;
