@@ -8,14 +8,17 @@
  * the character c in the string s.
  * Return: a pointer to the matched character or
  * NULL if the character is not found.
-*/
+ */
 char *_strchr(char *s, char c)
 {
-	while (*s)
+	if (s != NULL)
 	{
-		if (*s == c)
-			return (s);
-		s++;
+		while (*s)
+		{
+			if (*s == c)
+				return (s);
+			s++;
+		}
 	}
 
 	return (NULL);
