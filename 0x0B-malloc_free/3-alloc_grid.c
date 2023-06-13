@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 /**
- * free_grid - frees a 2d array
+ * fr_grid - frees a 2d array
  * @grid: The grind to free
  * @height: height of the array
  * Return: Nothing
