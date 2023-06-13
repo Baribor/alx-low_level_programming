@@ -66,8 +66,10 @@ char **strtow(char *str)
 
 	words = wordCount(str);
 
-	arr = (char **)malloc(sizeof(char *) * (words + 1));
+	if (words == 0)
+		return (NULL);
 
+	arr = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!arr)
 		return (NULL);
 
@@ -87,14 +89,12 @@ char **strtow(char *str)
 			wIndex = 0;
 			while (str[i] != ' ' && str[i] != '\0')
 			{
-				w[wIndex++] = str[i];
-				i++;
+				w[wIndex++] = str[i++];
 			}
 			w[wIndex] = '\0';
 			arr[aIndex++] = w;
 		}
 	}
-
 	arr[aIndex] = NULL;
 	return (arr);
 }
