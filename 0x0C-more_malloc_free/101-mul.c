@@ -1,6 +1,7 @@
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include "main.h"
 
 /**
  * _isdigit - Checks if a character is a digit.
@@ -91,24 +92,35 @@ void performAddition(int *t, int l1, int l2)
 }
 
 /**
+ * print - Prints a string
+ * @s: String to print
+ * Return: Void
+*/
+void print(char *s)
+{
+	int i = 0;
+
+	while (s[i])
+		_putchar(s[i++]);
+}
+
+/**
  * main - Multiplies arbitary large integers
  * @argc: Argument counter
  * @argv: Arguments passed to the program
- * Return: 0 if sucessful
+ * Return: 0 if successful
  */
 int main(int argc, char *argv[])
 {
 	int *a, *b;
 	int *ans;
-	int i, j, tmp, l1, l2;
+	int i, l1, l2, g;
 	char *s1;
 	char *s2;
 
-	printf("%d\n", argc);
-
 	if (argc != 3)
 	{
-		printf("Error\n");
+		print("Error\n");
 		exit(98);
 	}
 	s1 = argv[1];
@@ -119,16 +131,17 @@ int main(int argc, char *argv[])
 
 	l1 = strlen(s1);
 	l2 = strlen(s2);
+	g = l1 > l2? l1:l2;
 
-	a = malloc(sizeof(char) * (l1 + 1));
+	a = malloc(sizeof(char) * g);
 	if (!a)
 		exit(98);
 
-	b = malloc(sizeof(char) * (l2 + 1));
+	b = malloc(sizeof(char) * g);
 	if (!b)
 		exit(98);
 
-	ans = calloc(l1 + l2 + 1, sizeof(char));
+	ans = malloc((g + 1) *sizeof(char));
 
 	if (!ans)
 		exit(98);
@@ -136,7 +149,7 @@ int main(int argc, char *argv[])
 	fill_reversed(s1, a, l1);
 	fill_reversed(s2, b, l2);
 	create_addition_table(ans, a, b, l1, l2);
-	create_addition_table(ans, l1, l2);
+	performAddition(ans, l1, l2);
 
 	for (i = l1 + l2; i >= 0; i--)
 	{
@@ -148,5 +161,6 @@ int main(int argc, char *argv[])
 	{
 		printf("%d", ans[i]);
 	}
+	_putchar('\n');
 	return (0);
 }
