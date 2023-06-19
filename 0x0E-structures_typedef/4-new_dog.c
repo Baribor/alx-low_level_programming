@@ -11,24 +11,36 @@
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-
 	dog_t *d;
-	int sn = strlen(name);
-	int so = strlen(owner);
+	int sn, so;
 	char *nsn;
 	char *nso;
 
-	nsn = (char *)malloc((sn * sizeof(char)) + 1);
+	if (!name)
+	{
+		nsn = NULL;
+	}
+	else
+	{
+		sn = strlen(name);
+		nsn = (char *)malloc((sn * sizeof(char)) + 1);
+		if (!nsn)
+			return (NULL);
+		nsn = strcpy(nsn, name);
+	}
 
-	if (!nsn)
-		return (NULL);
-
-	nso = (char *)malloc((so * sizeof(char)) + 1);
-	if (!nso)
-		return (NULL);
-
-	nsn = strcpy(nsn, name);
-	nso = strcpy(nso, owner);
+	if (!owner)
+	{
+		nso = NULL;
+	}
+	else
+	{
+		so = strlen(owner);
+		nso = (char *)malloc((so * sizeof(char)) + 1);
+		if (!nso)
+			return (NULL);
+		nso = strcpy(nso, name);
+	}
 
 	d = malloc(sizeof(dog_t));
 	if (!d)
