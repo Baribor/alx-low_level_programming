@@ -8,14 +8,29 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *currentNode = head;
+	listint_t *slowPointer, *fastPointer;
 
-	while (currentNode)
+	slowPointer = fastPointer = head;
+
+	while (slowPointer && fastPointer && fastPointer->next)
 	{
-		if (currentNode->next >= currentNode)
-			return (currentNode->next == currentNode ? currentNode : currentNode->next);
-		currentNode = currentNode->next;
+		slowPointer = slowPointer->next;
+		fastPointer = fastPointer->next->next;
+		if (slowPointer == fastPointer)
+		{
+			slowPointer = head;
+			break;
+		}
 	}
 
-	return (currentNode);
+	if (!fastPointer || !fastPointer->next)
+		return (NULL);
+
+	while (slowPointer != fastPointer)
+	{
+		slowPointer = slowPointer->next;
+		fastPointer = fastPointer->next;
+	}
+
+	return (fastPointer);
 }
