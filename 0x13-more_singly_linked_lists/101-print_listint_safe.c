@@ -8,17 +8,17 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-    size_t len = 0;
-    const listint_t *currentNode = head;
+	size_t len = 0;
+	const listint_t *currentNode = head;
 
-    while (currentNode)
-    {
-        len++;
-        printf("[%p] %d\n", (void *)currentNode, currentNode->n);
-        if (currentNode->next > currentNode)
-            return (len);
-        currentNode = currentNode->next;
-    }
+	while (currentNode)
+	{
+		len++;
+		printf("[%p] %d\n", (void *)currentNode, currentNode->n);
+		if (currentNode->next >= currentNode)
+			return (len);
+		currentNode = currentNode->next;
+	}
 
-    return (len);
+	return (len);
 }
