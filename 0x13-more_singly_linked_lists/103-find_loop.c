@@ -13,7 +13,7 @@ listint_t *find_listint_loop(listint_t *head)
 	while (currentNode)
 	{
 		if (currentNode->next >= currentNode)
-			return (currentNode->next);
+			return (currentNode->next == currentNode ? currentNode : currentNode->next);
 		currentNode = currentNode->next;
 	}
 
