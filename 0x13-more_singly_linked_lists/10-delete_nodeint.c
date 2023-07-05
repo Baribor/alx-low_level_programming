@@ -3,7 +3,7 @@
 #include "lists.h"
 
 /**
- * delete_nodeint__at_index - Deletes a node at an index
+ * delete_nodeint_at_index - Deletes a node at an index
  * @head: Pointer to the head pointer
  * @index: Index of the node to delete
  * Return: 1 if successful else -1
