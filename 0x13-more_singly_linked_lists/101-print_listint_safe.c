@@ -19,7 +19,10 @@ size_t print_listint_safe(const listint_t *head)
 		for (i = 0; i < len; i++)
 		{
 			if (loopHead == currentHead)
+			{
+				printf("-> [%p] %d\n", (void *)currentHead, currentHead->n);
 				return (len);
+			}
 			loopHead = loopHead->next;
 		}
 		len++;
