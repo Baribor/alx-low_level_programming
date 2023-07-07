@@ -1,17 +1,4 @@
 /**
- * get_bit_length - Calculates the binary length of an int
- * @n: Dec rep of the number
- * Return: The length of the bin num.
- */
-unsigned int get_bit_length(unsigned long int n)
-{
-	if (!n)
-		return (0);
-
-	return (1 + get_bit_length(n >> 1));
-}
-
-/**
  * clear_bit - Sets the bit at index to 0
  * @n: Dec rep of the number
  * @index: Index of the bit to clear
@@ -19,14 +6,12 @@ unsigned int get_bit_length(unsigned long int n)
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned int bit_length;
+	unsigned int bit_length = sizeof(unsigned long int) * 8 - 1;
+	unsigned long int mask;
 
-	if (!*n)
-		return (index > 0 ? -1 : 1);
-
-	bit_length = get_bit_length(*n);
-	if (index > bit_length - 1)
+	if (index > bit_length)
 		return (-1);
-	*n ^= 1 << index;
+	mask = ~(1 << index);
+	*n &= mask;
 	return (1);
 }
