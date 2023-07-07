@@ -6,19 +6,14 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int idx = 0;
-	unsigned long int left;
+	unsigned int bit_length = sizeof(unsigned long int) * 8 - 1;
+	unsigned long int mask;
 
-	if (!n)
-		return (index == 0 ? 0 : -1);
+	if (index > bit_length)
+		return (-1);
 
-	while (n)
-	{
-		left = n >> 1;
-		if (idx == index)
-			return (n - (left * 2));
-		n = left;
-		idx++;
-	}
-	return (-1);
+	mask = 1 << index;
+	n &= mask;
+
+	return (n == mask);
 }
