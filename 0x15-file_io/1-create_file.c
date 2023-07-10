@@ -5,6 +5,7 @@
  * create_file - function that creates a file.
  * @filename: Name of the file
  * @text_content: Text content of the file
+ * Return: 1 if successful else -1
  */
 int create_file(const char *filename, char *text_content)
 {
