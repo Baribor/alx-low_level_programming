@@ -6,6 +6,7 @@
  * @ht: Hash table
  * @key: The key of the value
  * @value: The value to set
+ * Return: 1 on success else 0
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
@@ -17,7 +18,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (!key || strlen(key) == 0)
 		return (0);
 
-	new_elem = malloc(sizeof(hash_node_t));
+	new_elem = malloc(sizeof(hash_node_t *));
 	if (!new_elem)
 		return (0);
 
