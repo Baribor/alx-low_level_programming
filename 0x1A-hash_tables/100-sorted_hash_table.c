@@ -1,7 +1,7 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_create - creates a hash table
+ * shash_table_create - creates a hash table
  *
  * @size: size of the hash table
  * Return: the new hash table or NULL if error
@@ -27,11 +27,46 @@ shash_table_t *shash_table_create(unsigned long int size)
 }
 
 /**
- * hash_table_set - Adds an element to the hash table
+ * add_new - Adds a new node
+ *
+ * @ht: hash table
+ * @new: new element
+ * @cur: element ahead of new elem
+ * Return: Always 1
+ */
+int add_new(shash_table_t *ht, shash_node_t *new, shash_node_t *cur)
+{
+	if (!cur)
+	{
+		ht->stail->snext = new;
+		new->sprev = ht->stail;
+		ht->stail = new;
+		return (1);
+	}
+
+	if (cur == ht->shead)
+	{
+		new->snext = cur;
+		ht->shead = new;
+		cur->sprev = new;
+	}
+	else
+	{
+		new->sprev = cur->sprev;
+		new->snext = cur;
+		cur->sprev->snext = new;
+		cur->sprev = new;
+	}
+	return (1);
+}
+
+/**
+ * shash_table_set - Adds an element to the hash table
  *
  * @ht: Hash table
  * @key: The key of the value
  * @value: The value to set
+ * Return: 1 on success else 0
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
@@ -59,6 +94,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	{
 		ht->shead = new_elem;
 		ht->stail = new_elem;
+		return (1);
 	}
 	else
 	{
@@ -66,30 +102,8 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 		while (current && strcmp(current->key, key) < 0)
 			current = current->snext;
-
-		if (!current)
-		{
-			ht->stail->snext = new_elem;
-			new_elem->sprev = ht->stail;
-			ht->stail = new_elem;
-			return (1);
-		}
-
-		if (current == ht->shead)
-		{
-			new_elem->snext = current;
-			ht->shead = new_elem;
-			current->sprev = new_elem;
-		}
-		else
-		{
-			new_elem->sprev = current->sprev;
-			new_elem->snext = current;
-			current->sprev->snext = new_elem;
-			current->sprev = new_elem;
-		}
 	}
-	return (1);
+	return (add_new(ht, new_elem, current));
 }
 
 /**
